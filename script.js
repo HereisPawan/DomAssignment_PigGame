@@ -9,6 +9,7 @@ const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 const player0 = document.querySelector('.player--0');
 const player1 = document.querySelector('.player--1');
+
 const switchPlayer = function () {
   player0.classList.toggle('player--active');
   player1.classList.toggle('player--active');
@@ -18,6 +19,7 @@ score0P.textContent = 0;
 score1P.textContent = 0;
 let scorePlayer = [0, 0];
 let activePlayer = 0;
+let win = 0;
 const scores = [0, 0];
 dice.classList.add('hidden');
 
@@ -29,6 +31,20 @@ btnRoll.addEventListener('click', function () {
 
   //Show dice
   dice.classList.remove('hidden');
+
+  if (win === 1) {
+    scores[`${activePlayer}`] = 0;
+    document.getElementById(`current--${activePlayer}`).textContent =
+      scores[`${activePlayer}`];
+    // Remove winner class when clicked on roll dice if any player has won the round
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.remove('player--winner');
+    win = 0;
+    switchPlayer();
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    return;
+  }
 
   //Check for rolled dice number if the number is 1 switch to player 2 otherwise add to score
   if (number === 1) {
@@ -42,9 +58,13 @@ btnRoll.addEventListener('click', function () {
     scores[`${activePlayer}`] += number;
     document.getElementById(`current--${activePlayer}`).textContent =
       scores[`${activePlayer}`];
-    if (scores[`${activePlayer}`] >= 50) {
-      scorePlayer[`${activePlayer}`] + 1;
+    if (scores[`${activePlayer}`] >= 10) {
+      scorePlayer[`${activePlayer}`] += 1;
       document.querySelector(`#score--${activePlayer}`).textContent = 1;
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add('player--winner');
+      win = 1;
     }
   }
 });
