@@ -205,3 +205,63 @@ main {
   backdrop-filter: blur(3px);
   z-index: 5;
 }
+
+h1 {
+  text-align: center;
+}
+
+.info {
+  margin-top: 2rem;
+  margin-right: 2rem;
+  height: 4rem;
+}
+
+.info-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+
+  background-color: white;
+  padding: 4rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  padding-bottom: 30rem;
+}
+
+.large {
+  height: 8rem;
+}
+
+.content {
+  margin-top: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+}
+
+h2 {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.instruct {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.close-info-modal {
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}

@@ -9,6 +9,9 @@ const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 const player0 = document.querySelector('.player--0');
 const player1 = document.querySelector('.player--1');
+const infoButton = document.querySelector('.info');
+const infoModal = document.querySelector('.info-modal');
+const closeInfo = document.querySelector('.close-info-modal');
 
 const switchPlayer = function () {
   player0.classList.toggle('player--active');
@@ -40,17 +43,26 @@ function closeModal() {
   btnHold.classList.remove('hidden');
 }
 
+function closeInfoModal() {
+  infoModal.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
+
 dice.classList.add('hidden');
 
 //Roll dice functionality
 btnRoll.addEventListener('click', function () {
-  if (scorePlayer[`${activePlayer}`] === 2) {
+  if (scorePlayer[`${activePlayer}`] === 3) {
     openAModal();
     holdTheGame === 0;
-    setTimeout(myGreeting, 3000);
     scorePlayer[0] = scorePlayer[1] = 0;
     document.querySelector(`#score--0`).textContent = 0;
     document.querySelector(`#score--1`).textContent = 0;
+    document.getElementById(
+      'modal-restart'
+    ).textContent = `Wohooho Congrats !!  Player ${
+      activePlayer + 1
+    } wins the Game ... 🤠🤠`;
   }
   //Generating a random dice roll
   const number = Math.trunc(Math.random() * 6) + 1;
@@ -100,6 +112,11 @@ btnRoll.addEventListener('click', function () {
           .classList.add('player--winner');
         win = 1;
         btnHold.classList.add('hidden');
+        document.getElementById(
+          'modal-restart'
+        ).textContent = `Congratulations !!  Player ${
+          activePlayer + 1
+        } wins the round ... 😶‍🌫️`;
       }
     }
   }
@@ -115,9 +132,10 @@ btnHold.addEventListener('click', function () {
 closeM.addEventListener('click', closeModal);
 
 btnRestart.addEventListener('click', function () {
-  openAModal();
+  document.getElementById('modal-restart').textContent =
+    'New Game started ... Be the best one win 😃';
   holdTheGame === 0;
-  setTimeout(myGreeting, 3000);
+  openAModal();
   scorePlayer[0] = scorePlayer[1] = 0;
   scores[0] = scores[1] = 0;
   document.querySelector(`#score--0`).textContent = 0;
@@ -127,4 +145,23 @@ btnRestart.addEventListener('click', function () {
   player0.classList.remove('player--winner');
   player1.classList.remove('player--winner');
   win = 0;
+  dice.classList.add('hidden');
 });
+
+//Game info button on click feature
+infoButton.addEventListener('click', function () {
+  infoModal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+});
+
+//Make image larger on hover
+infoButton.onmouseover = function () {
+  infoButton.src = 'info-color.png';
+};
+
+//Make image smaller on onmouseout
+infoButton.onmouseout = function () {
+  infoButton.src = 'info.png';
+};
+
+closeInfo.addEventListener('click', closeInfoModal);
