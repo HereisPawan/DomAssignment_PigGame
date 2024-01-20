@@ -28,20 +28,23 @@
       
     <div class="modal hidden">
       <button class="close-modal">&times;</button>
-      <h1>I'm a modal window 😍</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </p>
+      <h1 id="modal-restart">New Game started ... Be the best one win 😃</h1>
     </div>
     <div class="overlay hidden"></div>
 
       <img src="dice-5.png" alt="Playing dice" class="dice" />
+      <img src="info.png" class="info"/>
+      <div class="info-modal hidden">
+        <button class="close-info-modal">&times;</button>
+        <div class="content"><h2>Instructions Of Game - </h1>
+          <ul class="instruct">
+            <li>Game is of 3 rounds . The first player to win all three rounds win's the game .</li>
+            <li>Player needs current score to be more than 25 to win the round .</li>
+            <li>Hold button is used to switch the chance of rolling the dice to other player . Only Active player can use it .</li>
+            <li>If the Dice shows number 1 , then the current score of active player becomes 0 and the dice is switched to other player.</li>
+          </ul>
+      </div>
+    </div>
       <button class="btn btn--new">🔄 New game</button>
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
