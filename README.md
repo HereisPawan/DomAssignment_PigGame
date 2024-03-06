@@ -7,4 +7,6 @@ Instructions Of Game -
 3. Hold button is used to switch the chance of rolling the dice to other player . Only Active player can use it .
 4. If the Dice shows number 1 , then the current score of active player becomes 0 and the dice is switched to other player.
 
+😶‍🌫️Check the web game , live at - https://hereispawan.github.io/DomAssignment_PigGame/
+
 Credits to Jonas Schmedtmann (The Complete JavaScript Course 2024: From Zero to Expert!)
